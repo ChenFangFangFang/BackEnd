@@ -10,7 +10,7 @@ public class BookController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String bookList(Model model) {
-        return "hello book";
+        return "books";
     }
 
 }
