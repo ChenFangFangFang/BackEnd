@@ -49,4 +49,12 @@ public class BookController {
         return "redirect:../booklist";
     }
 
+    @RequestMapping(value = "/modify/{id}", method = RequestMethod.GET)
+    public String updateBook(@PathVariable("id") Long bookId, Model model) {
+        Book book = repository.findById(bookId).orElse(null);
+        model.addAttribute("book", book);
+        return "editbook";
+
+    }
+
 }
