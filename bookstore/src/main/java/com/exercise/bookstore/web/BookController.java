@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.exercise.bookstore.domain.Book;
 import com.exercise.bookstore.domain.BookRepository;
+import com.exercise.bookstore.domain.CategoryRepository;
+
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -15,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class BookController {
     @Autowired
     private BookRepository repository;
+
+    @Autowired
+    private CategoryRepository drepository;
 
     @RequestMapping(value = "/index")
     public String bookList(Model model) {
@@ -33,6 +38,7 @@ public class BookController {
     @RequestMapping(value = "/add")
     public String addStudent(Model model) {
         model.addAttribute("book", new Book());
+        model.addAttribute("categories", drepository.findAll());
         return "addbook";
     }
 
@@ -53,6 +59,7 @@ public class BookController {
     public String updateBook(@PathVariable("id") Long bookId, Model model) {
         Book book = repository.findById(bookId).orElse(null);
         model.addAttribute("book", book);
+        model.addAttribute("categories", drepository.findAll());
         return "editbook";
 
     }

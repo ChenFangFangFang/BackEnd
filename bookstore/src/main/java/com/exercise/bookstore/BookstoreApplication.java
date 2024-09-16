@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Bean;
 
 import com.exercise.bookstore.domain.Book;
 import com.exercise.bookstore.domain.BookRepository;
+import com.exercise.bookstore.domain.Category;
+import com.exercise.bookstore.domain.CategoryRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -19,15 +21,25 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner bookstoreDemo(BookRepository repository) {
+	public CommandLineRunner bookstoreDemo(BookRepository repository, CategoryRepository drepository) {
 		return (args) -> {
 			// Your code...add some demo data to db
 			log.info("save a couple of books");
-			repository.save(new Book("The Catcher in the Rye", "J.D. Salinger", 1951, "9780316769488", 8.99));
-			repository.save(new Book("To Kill a Mockingbird", "Harper Lee", 1960, "9780060935467", 7.19));
-			repository.save(new Book("1984", "George Orwell", 1949, "9780451524935", 9.99));
-			repository.save(new Book("Moby Dick", "Herman Melville", 1851, "9781503280786", 11.49));
-			repository.save(new Book("Pride and Prejudice", "Jane Austen", 1813, "9781503290563", 6.99));
+
+			Category category1 = new Category("type1");
+			Category category2 = new Category("type2");
+			Category category3 = new Category("type3");
+
+			drepository.save(category1);
+			drepository.save(category2);
+			drepository.save(category3);
+
+			repository
+					.save(new Book("The Catcher in the Rye", "J.D. Salinger", 1951, "9780316769488", 8.99, category1));
+			repository.save(new Book("To Kill a Mockingbird", "Harper Lee", 1960, "9780060935467", 7.19, category2));
+			repository.save(new Book("1984", "George Orwell", 1949, "9780451524935", 9.99, category1));
+			repository.save(new Book("Moby Dick", "Herman Melville", 1851, "9781503280786", 11.49, category3));
+			repository.save(new Book("Pride and Prejudice", "Jane Austen", 1813, "9781503290563", 6.99, category2));
 
 			log.info("fetch all books");
 			for (Book book : repository.findAll()) {
