@@ -8,6 +8,10 @@
 </head>
 
 <body>
+    <div class="col-md-4">
+        <span sec:authentication="name">Name</span>
+
+    </div>
     <h1>Books</h1>
     <table class="table table-striped">
         <thead>
@@ -17,7 +21,7 @@
                 <th>Year</th>
                 <th>ISBN</th>
                 <th>Category</th>
-
+                <th sec:authorize="hasAuthority('ADMIN')"> </th>
             </tr>
         </thead>
         <tbody>
@@ -29,7 +33,8 @@
                 <td th:text="${book.year}"></td>
                 <td th:text="${book.isbn}"></td>
                 <td th:text="${book.category.name}"></td>
-                <td><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>
+                <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}"
+                        class="btn btn-danger">Delete</a></td>
                 <td><a th:href="@{/modify/{id}(id=${book.id})}">Edit</a></td>
 
             </tr>

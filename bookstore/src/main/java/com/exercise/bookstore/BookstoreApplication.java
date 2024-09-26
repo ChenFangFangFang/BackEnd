@@ -11,6 +11,8 @@ import com.exercise.bookstore.domain.Book;
 import com.exercise.bookstore.domain.BookRepository;
 import com.exercise.bookstore.domain.Category;
 import com.exercise.bookstore.domain.CategoryRepository;
+import com.exercise.bookstore.domain.User;
+import com.exercise.bookstore.domain.UserRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -21,7 +23,8 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner bookstoreDemo(BookRepository repository, CategoryRepository drepository) {
+	public CommandLineRunner bookstoreDemo(BookRepository repository, CategoryRepository drepository,
+			UserRepository urpository) {
 		return (args) -> {
 			// Your code...add some demo data to db
 			log.info("save a couple of books");
@@ -40,6 +43,11 @@ public class BookstoreApplication {
 			repository.save(new Book("1984", "George Orwell", 1949, "9780451524935", 9.99, category1));
 			repository.save(new Book("Moby Dick", "Herman Melville", 1851, "9781503280786", 11.49, category3));
 			repository.save(new Book("Pride and Prejudice", "Jane Austen", 1813, "9781503290563", 6.99, category2));
+
+			User user1 = new User("user", "$2y$10$mbVzVg7IzFqI5025oH05z.sshSXIbJdajGJxdlGtVzzaNVRZly5Bi", "USER");
+			User user2 = new User("admin", "$2y$10$swotAl9bzpLK4RuU2q1kIeEsXvH2zVjB09eZcnkNWw6fpb/Ik1BwW", "ADMIN");
+			urpository.save(user1);
+			urpository.save(user2);
 
 			log.info("fetch all books");
 			for (Book book : repository.findAll()) {
