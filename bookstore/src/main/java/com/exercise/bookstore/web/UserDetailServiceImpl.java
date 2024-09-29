@@ -12,9 +12,12 @@ import com.exercise.bookstore.domain.UserRepository;
 
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
+    private final UserRepository repository;
 
     @Autowired
-    UserRepository repository;
+    public UserDetailServiceImpl(UserRepository userRepository) {
+        this.repository = userRepository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
