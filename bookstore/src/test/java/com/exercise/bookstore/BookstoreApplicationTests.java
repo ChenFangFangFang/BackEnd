@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class BookstoreApplicationTests {
 
 	@Test
+	// defines a method to be test method
 	void contextLoads() {
 	}
 
