@@ -44,7 +44,7 @@ public class BookstoreApplication {
 			repository.save(new Book("Moby Dick", "Herman Melville", 1851, "9781503280786", 11.49, category3));
 			repository.save(new Book("Pride and Prejudice", "Jane Austen", 1813, "9781503290563", 6.99, category2));
 
-			User user1 = new User("user", "$2y$10$mbVzVg7IzFqI5025oH05z.sshSXIbJdajGJxdlGtVzzaNVRZly5Bi", "USER",
+			User user1 = new User("user", "$2y$10$qJiIaSzLDCnsEFP6JLkkXuqjJnBcB6RqkIfes2fhIoCOsLIwhEBYC", "USER",
 					"a@jd");
 			User user2 = new User("admin", "$2y$10$swotAl9bzpLK4RuU2q1kIeEsXvH2zVjB09eZcnkNWw6fpb/Ik1BwW", "ADMIN",
 					"a@jd");
