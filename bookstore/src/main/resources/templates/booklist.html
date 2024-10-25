@@ -9,10 +9,13 @@
 
 <body>
     <div class="col-md-4">
-        <span sec:authentication="name">Name</span>
-
     </div>
     <h1>Books</h1>
+    <div class="col-md-4">
+        <span sec:authentication="name">Name</span>
+        <a href="/logout" class="btn btn-secondary ml-2">Logout</a>
+    </div>
+
     <table class="table table-striped">
         <thead>
             <tr>

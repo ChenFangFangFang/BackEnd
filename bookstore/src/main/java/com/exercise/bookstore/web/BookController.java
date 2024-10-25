@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,7 +15,6 @@ import com.exercise.bookstore.domain.BookRepository;
 import com.exercise.bookstore.domain.CategoryRepository;
 
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -26,11 +24,6 @@ public class BookController {
 
     @Autowired
     private CategoryRepository drepository;
-
-    @RequestMapping(value = "login")
-    public String login() {
-        return "login";
-    }
 
     @RequestMapping(value = "/index")
     public String bookList(Model model) {

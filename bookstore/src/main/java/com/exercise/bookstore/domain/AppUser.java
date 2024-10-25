@@ -3,8 +3,7 @@ package com.exercise.bookstore.domain;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "UserTable")
-public class User {
+public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
@@ -20,18 +19,16 @@ public class User {
 
     @Column(name = "role", nullable = false)
     private String role;
-    @Column(name = "email", nullable = false)
-    private String email;
 
-    public User() {
+    public AppUser() {
 
     }
 
-    public User(String username, String passwordHash, String role, String email) {
+    public AppUser(String username, String passwordHash, String role) {
         this.username = username;
         this.passwordHash = passwordHash;
         this.role = role;
-        this.email = email;
+
     }
 
     public String getUsername() {
@@ -56,14 +53,6 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
 }
